@@ -6,14 +6,11 @@ using UnityEngine;
 public class ChipBuilder : MonoBehaviour
 {
 
-	public WhiteChipPool m_whiteChipPool;
-
-	private List<ChipMono> m_activeChips = new List<ChipMono>();
 
 	void Start()
     {
-        
-    }
+		ObjectPooler.Instance.SpawnFromPool("whiteChip", transform.position, Quaternion.identity);
+	}
 
 
 	private void BuildChips(int inputChips)
@@ -23,13 +20,8 @@ public class ChipBuilder : MonoBehaviour
 		int numOfChips = inputChips;
 		int chip5s = 0;
 		int singleChips = 0;
-		var chip = m_whiteChipPool.Get();
-		if (chip == null)
-		{
-			Debug.LogWarning("Chip pool is empty!");
-			return;
-		}
 
+		
 		while (numOfChips > 0)
 		{
 			if (numOfChips >= 5)
@@ -47,5 +39,8 @@ public class ChipBuilder : MonoBehaviour
 
 
 		}
+
+
+
 	}
 }

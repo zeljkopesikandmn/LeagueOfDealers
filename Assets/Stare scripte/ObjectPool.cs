@@ -28,7 +28,8 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         {
             var pooledObject = Instantiate(m_prefab, transform);
             pooledObject.gameObject.SetActive(false);
-            m_freeList.Add(pooledObject);
+			pooledObject.transform.Rotate(0, Random.Range(0, 100), 0);
+			m_freeList.Add(pooledObject);
         }
     }
 
